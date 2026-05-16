@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maliva Bernard Tabi — Eco-Tourism & Operations Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f1a0d;
+    --paper: #f6f9f4;
+    --green: #3a6b35;
+    --green-light: #7fb876;
+    --green-pale: #d4e8d0;
+    --earth: #8b6914;
+    --muted: #556b52;
+    --rule: rgba(58,107,53,0.2);
+    --card-bg: #ffffff;
+    --section-bg: #eef4ec;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px;
+    position: relative;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; right: -1px;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--green-light), transparent);
+  }
+
+  .hero-right {
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 64px;
+  }
+
+  .monogram {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    font-weight: 300;
+    color: var(--green-light);
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 32px;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 1.1;
+    color: #f6f9f4;
+    margin-bottom: 8px;
+    animation: fadeUp 1s 0.1s ease both;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--green-light);
+  }
+
+  .hero-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 40px;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-divider {
+    width: 48px;
+    height: 1px;
+    background: var(--green-light);
+    margin-bottom: 32px;
+    animation: expandWidth 1s 0.3s ease both;
+  }
+
+  .hero-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: fadeUp 1s 0.35s ease both;
+  }
+
+  .hero-contact a {
+    font-size: 12px;
+    color: rgba(246,249,244,0.6);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+  .hero-contact a:hover { color: var(--green-light); }
+
+  .hero-summary {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 48px;
+    animation: fadeUp 1s 0.15s ease both;
+  }
+
+  .hero-summary em {
+    font-style: italic;
+    color: var(--green);
+  }
+
+  .nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .nav-pill {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-pill:hover {
+    background: var(--green);
+    color: #fff;
+    border-color: var(--green);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 100px 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  section.visible { opacity: 1; transform: translateY(0); }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 64px;
+  }
+
+  /* ── EXPERTISE GRID ── */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .expertise-item {
+    background: var(--card-bg);
+    padding: 40px 32px;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .expertise-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--green);
+    transition: width 0.4s ease;
+  }
+
+  .expertise-item:hover { background: var(--section-bg); }
+  .expertise-item:hover::before { width: 100%; }
+
+  .expertise-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--green);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .expertise-name {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--ink);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .expertise-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--ink); }
+  #experience .section-title { color: var(--paper); }
+  #experience .section-label { color: var(--green-light); }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    margin-bottom: 72px;
+    padding-bottom: 72px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .exp-grid:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .exp-period {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 12px;
+  }
+
+  .exp-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--paper);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .exp-location {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+  }
+
+  .exp-role {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 24px;
+  }
+
+  .exp-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .exp-points li {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .exp-points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--green-light);
+    font-size: 12px;
+  }
+
+  /* ── ACHIEVEMENT BANNER ── */
+  .achievement {
+    background: var(--green);
+    padding: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .achievement::before {
+    content: '★';
+    font-size: 200px;
+    position: absolute;
+    top: -40px;
+    right: 60px;
+    color: rgba(255,255,255,0.05);
+    line-height: 1;
+  }
+
+  .achievement-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.9);
+    max-width: 700px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .achievement-meta {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--green-pale);
+  }
+
+  /* ── SKILLS ── */
+  .skills-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+
+  .skill-group-title {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .skill-tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-tag {
+    font-size: 12px;
+    padding: 6px 14px;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+  .skill-tag:hover {
+    border-color: var(--green);
+    color: var(--green);
+    background: rgba(58,107,53,0.05);
+  }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--section-bg); }
+
+  .edu-timeline {
+    position: relative;
+    padding-left: 40px;
+  }
+
+  .edu-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--green), transparent);
+  }
+
+  .edu-item {
+    position: relative;
+    margin-bottom: 48px;
+  }
+  .edu-item:last-child { margin-bottom: 0; }
+
+  .edu-item::before {
+    content: '';
+    position: absolute;
+    left: -44px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--green);
+    border: 2px solid var(--section-bg);
+    box-shadow: 0 0 0 3px var(--rule);
+  }
+
+  .edu-year {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .edu-institution {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--ink); text-align: center; }
+  #contact .section-title { color: var(--paper); margin-bottom: 16px; }
+
+  .contact-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 56px;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  .contact-link:hover { transform: translateY(-4px); }
+
+  .contact-link-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--green-light);
+  }
+
+  .contact-link-value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #060f05;
+    text-align: center;
+    padding: 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.15);
+    text-transform: uppercase;
+  }
+
+  /* ── LANGUAGES ── */
+  .lang-strip {
+    display: flex;
+    gap: 32px;
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .lang-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .lang-level {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes expandWidth {
+    from { width: 0; }
+    to   { width: 48px; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 64px 32px 48px; }
+    .hero-right { padding: 48px 32px 64px; }
+    .monogram { font-size: 56px; }
+    .hero-name { font-size: 36px; }
+    .container { padding: 0 32px; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .skills-layout { grid-template-columns: 1fr; gap: 40px; }
+    .exp-grid { grid-template-columns: 1fr; gap: 24px; }
+    .section-title { font-size: 36px; }
+    .achievement { padding: 40px 32px; }
+    .contact-links { gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-left">
+    <div class="monogram">MBT</div>
+    <h1 class="hero-name">Maliva <em>Bernard</em><br>Tabi</h1>
+    <p class="hero-title">Eco-Tourism · Operations · Conservation</p>
+    <div class="hero-divider"></div>
+    <div class="hero-contact">
+      <a href="tel:+237679344607">+237 679 344 607 &nbsp;/&nbsp; +237 695 026 772</a>
+      <a href="mailto:tabibernard88@gmail.com">tabibernard88@gmail.com</a>
+      <span style="font-size:12px;color:rgba(246,249,244,0.4);letter-spacing:1px;">Dla — Cameroon</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <p class="hero-summary">
+      A versatile professional with over a decade of experience across <em>eco-tourism</em>, wildlife conservation, operations management, and data processing — driven by a deep commitment to people, nature, and excellence.
+    </p>
+    <nav class="nav-pills">
+      <a class="nav-pill" href="#expertise">Expertise</a>
+      <a class="nav-pill" href="#experience">Experience</a>
+      <a class="nav-pill" href="#skills">Skills</a>
+      <a class="nav-pill" href="#education">Education</a>
+      <a class="nav-pill" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ── EXPERTISE ── -->
+<section id="expertise">
+  <div class="container">
+    <p class="section-label">Core Competencies</p>
+    <h2 class="section-title">What I bring<br>to the table</h2>
+    <div class="expertise-grid">
+      <div class="expertise-item">
+        <div class="expertise-num">01</div>
+        <div class="expertise-name">Eco-Tourism Guiding</div>
+        <div class="expertise-desc">Professionally certified eco-tourism guide with hands-on experience at Limbe Wildlife Center — leading guided tours, conducting nature club lessons, and delivering memorable visitor experiences.</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-num">02</div>
+        <div class="expertise-name">Wildlife & Conservation</div>
+        <div class="expertise-desc">Over three years in wildlife conservation roles — monitoring animal health, assisting in veterinary procedures, and conducting field research in the Ebo Forest using GPS and compass navigation.</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-num">03</div>
+        <div class="expertise-name">Operations Management</div>
+        <div class="expertise-desc">Regional Head of Production at Presprint Plc — overseeing driving license production, security operations, and the smooth functioning of regional units across Littoral.</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-num">04</div>
+        <div class="expertise-name">Data Processing & IT</div>
+        <div class="expertise-desc">Experienced in electronic data processing, database management, and computer software — combining technical proficiency with operational accuracy in high-volume environments.</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-num">05</div>
+        <div class="expertise-name">Customer Service</div>
+        <div class="expertise-desc">Online customer service assistance and direct visitor engagement across multiple organisations — consistently delivering professional, people-first service in diverse environments.</div>
+      </div>
+      <div class="expertise-item">
+        <div class="expertise-num">06</div>
+        <div class="expertise-name">Field Research</div>
+        <div class="expertise-desc">Monitoring assistant with WCS/Ebo Forest Research Project — collecting human, animal, rainfall, and temperature data in the field, with strong proficiency in GPS navigation and data entry.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACHIEVEMENT BANNER ── -->
+<div class="achievement">
+  <p class="achievement-text">
+    "Awarded the Maiden Certificate of Excellence for Head of Production Unit (National) at Presprint Plc — recognised for outstanding performance across the calendar year 2025."
+  </p>
+  <p class="achievement-meta">Certificate of Excellence &nbsp;·&nbsp; Presprint Plc Limbe &nbsp;·&nbsp; March 2026</p>
+</div>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Career History</p>
+    <h2 class="section-title">Professional<br>Experience</h2>
+
+    <div class="exp-grid">
+      <div>
+        <p class="exp-period">2014 — Present</p>
+        <p class="exp-company">Presprint Plc</p>
+        <p class="exp-location">Limbe & Littoral, Cameroon</p>
+      </div>
+      <div>
+        <p class="exp-role">Regional Head of Production · Deputy Head of Support Staff · Data Processor</p>
+        <ul class="exp-points">
+          <li>Appointed Regional Head of Production Unit for Littoral — overseeing driving license production and regional security operations.</li>
+          <li>Managed the Driving School Unit as Deputy Head of Support Staff, ensuring smooth daily operations and compliance.</li>
+          <li>Processed high volumes of electronic data from physical documents into the company database with precision and accuracy.</li>
+          <li>Provided online customer service assistance, resolving queries and maintaining professional client relationships.</li>
+          <li>Recognised nationally with the Maiden Certificate of Excellence for Head of Production (2025).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-grid">
+      <div>
+        <p class="exp-period">Feb — Aug 2013</p>
+        <p class="exp-company">Wildlife Conservation Society</p>
+        <p class="exp-location">Ebo Forest Research Project, Cameroon</p>
+      </div>
+      <div>
+        <p class="exp-role">Monitoring Assistant</p>
+        <ul class="exp-points">
+          <li>Lived and worked in the Ebo Forest conducting systematic collection of wildlife, human activity, rainfall, and temperature data.</li>
+          <li>Navigated complex forest terrain using GPS and compass to reach and document remote monitoring sites.</li>
+          <li>Entered and organised field data for research analysis, contributing to conservation intelligence reports.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-grid">
+      <div>
+        <p class="exp-period">Jan 2009 — Feb 2012</p>
+        <p class="exp-company">Limbe Wildlife Center</p>
+        <p class="exp-location">Limbe, Cameroon</p>
+      </div>
+      <div>
+        <p class="exp-role">Animal Keeper</p>
+        <ul class="exp-points">
+          <li>Monitored daily animal health and welfare, reporting anomalies to veterinary staff promptly.</li>
+          <li>Assisted in veterinary procedures and maintained hygienic enclosure standards.</li>
+          <li>Delivered guided tours to visitors — communicating conservation values and wildlife knowledge engagingly.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-grid">
+      <div>
+        <p class="exp-period">Oct — Nov 2008</p>
+        <p class="exp-company">Limbe Wildlife Center</p>
+        <p class="exp-location">Internship</p>
+      </div>
+      <div>
+        <p class="exp-role">Eco-Tourism Intern</p>
+        <ul class="exp-points">
+          <li>Identified and documented wildlife species during field observation sessions.</li>
+          <li>Conducted behavioural studies under professional supervision.</li>
+          <li>Facilitated nature club lessons for primary and secondary school students, inspiring environmental awareness.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Technical Arsenal</p>
+    <h2 class="section-title">Skills &<br>Tools</h2>
+    <div class="skills-layout">
+      <div>
+        <p class="skill-group-title">Conservation & Tourism</p>
+        <div class="skill-tag-cloud">
+          <span class="skill-tag">Eco-Tourism Guiding</span>
+          <span class="skill-tag">Wildlife Monitoring</span>
+          <span class="skill-tag">Animal Husbandry</span>
+          <span class="skill-tag">Field Research</span>
+          <span class="skill-tag">GPS Navigation</span>
+          <span class="skill-tag">Environmental Conservation</span>
+          <span class="skill-tag">Nature Education</span>
+          <span class="skill-tag">Visitor Engagement</span>
+        </div>
+        <br>
+        <p class="skill-group-title">Operations & Management</p>
+        <div class="skill-tag-cloud">
+          <span class="skill-tag">Operations Management</span>
+          <span class="skill-tag">Production Oversight</span>
+          <span class="skill-tag">Customer Service</span>
+          <span class="skill-tag">Team Leadership</span>
+          <span class="skill-tag">Security Management</span>
+        </div>
+      </div>
+      <div>
+        <p class="skill-group-title">Technology & Data</p>
+        <div class="skill-tag-cloud">
+          <span class="skill-tag">Electronic Data Processing</span>
+          <span class="skill-tag">Database Management</span>
+          <span class="skill-tag">Computer Software</span>
+          <span class="skill-tag">Data Entry</span>
+          <span class="skill-tag">Online Support Systems</span>
+        </div>
+        <div class="lang-strip">
+          <div>
+            <div class="lang-name">English</div>
+            <div class="lang-level">Fluent</div>
+          </div>
+          <div>
+            <div class="lang-name">French</div>
+            <div class="lang-level">Conversational</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EDUCATION ── -->
+<section id="education">
+  <div class="container">
+    <p class="section-label">Academic & Training Background</p>
+    <h2 class="section-title">Education &<br>Certifications</h2>
+    <div class="edu-timeline">
+      <div class="edu-item">
+        <p class="edu-year">March 2026</p>
+        <p class="edu-degree">Maiden Certificate of Excellence</p>
+        <p class="edu-institution">Presprint Plc Limbe — Head of Production Unit (National), 2025</p>
+      </div>
+      <div class="edu-item">
+        <p class="edu-year">Sep 2017 — May 2018</p>
+        <p class="edu-degree">Ministerial Training Certificate</p>
+        <p class="edu-institution">Discipline the Nations Ministries / Cameroon Bible Training Centers</p>
+      </div>
+      <div class="edu-item">
+        <p class="edu-year">April — Sep 2010</p>
+        <p class="edu-degree">Computer Software Training</p>
+        <p class="edu-institution">Hi-TECH Multimedia Center</p>
+      </div>
+      <div class="edu-item">
+        <p class="edu-year">Jul — Dec 2008</p>
+        <p class="edu-degree">Professional Eco-Tourism Guide</p>
+        <p class="edu-institution">National Employment Fund / Cameroon Support and Placement Services</p>
+      </div>
+      <div class="edu-item">
+        <p class="edu-year">2007</p>
+        <p class="edu-degree">GCE Advanced Level Certificate</p>
+        <p class="edu-institution">Government Bilingual High School, Limbe</p>
+      </div>
+      <div class="edu-item">
+        <p class="edu-year">2005</p>
+        <p class="edu-degree">GCE Ordinary Level Certificate</p>
+        <p class="edu-institution">Government Bilingual High School, Limbe</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Let's connect</h2>
+    <p class="contact-sub">Open to eco-tourism, conservation, operations & HR management roles.</p>
+    <div class="contact-links">
+      <a class="contact-link" href="tel:+237679344607">
+        <span class="contact-link-label">Phone</span>
+        <span class="contact-link-value">+237 679 344 607</span>
+      </a>
+      <a class="contact-link" href="tel:+237695026772">
+        <span class="contact-link-label">Alternate</span>
+        <span class="contact-link-value">+237 695 026 772</span>
+      </a>
+      <a class="contact-link" href="mailto:tabibernard88@gmail.com">
+        <span class="contact-link-label">Email</span>
+        <span class="contact-link-value">tabibernard88@gmail.com</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  &copy; 2026 Maliva Bernard Tabi &nbsp;·&nbsp; Eco-Tourism & Operations Professional &nbsp;·&nbsp; Dla — Cameroon
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  sections.forEach(s => observer.observe(s));
+
+  const expertiseItems = document.querySelectorAll('.expertise-item');
+  const expObserver = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }, i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  expertiseItems.forEach(item => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(20px)';
+    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease, background 0.2s';
+    expObserver.observe(item);
+  });
+</script>
+
+</body>
+</html>
